@@ -3,7 +3,15 @@ services:
   nginx-tesla:
    image: nginx
    volumes:
-    - ./templates:/etc/nginx/templates
+    - vol_dojo:/usr/share/nginx/html
    ports:
     - "8080:80"
+  nginx-backup:
+   image: nginx
+   volumes_from:
+    - nginx-tesla	
+   ports:
+    - "8090:80"
+volumes:
+  vol_dojo:
    
